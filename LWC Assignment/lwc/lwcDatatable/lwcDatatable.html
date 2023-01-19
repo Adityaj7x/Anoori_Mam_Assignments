@@ -1,0 +1,48 @@
+<template>
+    <template if:true={showComponent}>
+        <template if:true={part1}>
+            <div style="height: 150px;">
+                <lightning-card title="Add a Parent Case to this record">
+                    <div style="padding-left: 16px; padding-bottom: 16px;">This case does not contain any parent case.
+                        <br>
+                        Please add parent
+                        case. To add, click on Add parent button
+                    </div>
+                    <div style="padding-left: 16px;"><lightning-button variant="brand" label={onClickButtonLabel}
+                            onclick={handleButtonClick}></lightning-button></div>
+                </lightning-card>
+            </div>
+        </template>
+        <template if:true={part2}>
+            <lightning-card>
+                <div style="padding-left: 16px; padding-bottom: 10px;">
+
+
+                    <table>
+                        <tr>
+                            <td style="font-weight: bold;">Case Number</td>
+                            <td style="font-weight: bold;">Case Type</td>
+                            <td style="font-weight: bold;">Priority</td>
+                        </tr>
+                        <template for:each={data} for:item="cs">
+                            <tr key={cs.Id}>
+                                <td>
+                                    <button onclick={handleOnClickCase} value={cs.Id}>{cs.CaseNumber}</button>
+                                </td>
+                                <td>{cs.Case_type__c}</td>
+                                <td>{cs.Priority}</td>
+                            </tr>
+                        </template>
+                    </table>
+
+
+
+                </div>
+                <div style="padding-left: 16px;">
+                    <lightning-button variant="brand" label={onClickButtonLabel}
+                        onclick={handleButtonClick}></lightning-button>
+                </div>
+            </lightning-card>
+        </template></template>
+
+</template>
